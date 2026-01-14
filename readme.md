@@ -242,8 +242,6 @@ Recycling Request
 
 6. **Access the API:**
    - Base URL: `http://127.0.0.1:8000/api/`
-   - Admin Panel: `http://127.0.0.1:8000/admin/` (if needed)
-
 ---
 
 ## API Documentation
@@ -262,7 +260,7 @@ Register a new user or create an account.
 **Request Body:**
 ```json
 {
-  "name": "John Doe",
+  "name": "Alice",
   "phone": "12345678901"
 }
 ```
@@ -271,7 +269,7 @@ Register a new user or create an account.
 ```json
 {
   "id": 1,
-  "name": "John Doe",
+  "name": "Alice",
   "phone": "12345678901",
   "points": 0,
   "is_active": true
@@ -291,7 +289,7 @@ Register a new user or create an account.
 ```bash
 curl -X POST http://127.0.0.1:8000/api/register/ \
   -H "Content-Type: application/json" \
-  -d '{"name": "John Doe", "phone": "12345678901"}'
+  -d '{"name": "Alice", "phone": "12345678901"}'
 ```
 
 ---
@@ -378,7 +376,7 @@ Retrieve a user's profile and current points balance.
 ```json
 {
   "id": 1,
-  "name": "John Doe",
+  "name": "Alice",
   "phone": "12345678901",
   "points": 15,
   "is_active": true
@@ -621,4 +619,4 @@ This project is part of a coding challenge for Drop Me.
 
 ## Contact & Support
 
-For questions or issues, please refer to the project repository or contact the development team.
+For questions or issues, please refer to the project repository or contact me.
