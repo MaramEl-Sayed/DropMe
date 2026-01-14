@@ -46,45 +46,45 @@ This backend system supports the core recycling flow where users:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      Client Application                      │
-│              (Mobile App / Web Frontend / Machine)           │
+│                      Client Application                     │
+│              (Mobile App / Web Frontend / Machine)          │
 └───────────────────────┬─────────────────────────────────────┘
                         │ HTTP/REST API
                         │
 ┌───────────────────────▼─────────────────────────────────────┐
-│                    Django REST Framework                      │
+│                    Django REST Framework                    │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │
 │  │   Views      │  │ Serializers  │  │    URLs      │       │
 │  │  (API Logic) │  │ (Validation) │  │  (Routing)   │       │
 │  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘       │
-│         │                 │                  │                │
-│         └─────────────────┼──────────────────┘                │
-│                           │                                    │
-│  ┌───────────────────────▼──────────────────────┐            │
-│  │              Business Logic Layer             │            │
-│  │  ┌──────────────┐      ┌──────────────┐     │            │
-│  │  │   rules.py   │      │ constants.py │     │            │
-│  │  │ (Points Calc)│      │ (Config Vals)│     │            │
-│  │  └──────────────┘      └──────────────┘     │            │
-│  └───────────────────────┬──────────────────────┘            │
-└───────────────────────────┼────────────────────────────────────┘
-                            │
-┌───────────────────────────▼─────────────────────────────────────┐
-│                      Data Layer (Django ORM)                       │
-│  ┌──────────────────┐          ┌──────────────────┐              │
-│  │   User Model     │          │ RecyclingTransaction│            │
-│  │  - id (PK)       │◄─────────│  - user (FK)      │              │
-│  │  - name          │          │  - material_type  │              │
-│  │  - phone         │          │  - quantity       │              │
-│  │  - points        │          │  - points_awarded│              │
-│  │  - is_active     │          │  - timestamp      │              │
-│  └──────────────────┘          └──────────────────┘              │
-└───────────────────────────┬───────────────────────────────────────┘
+│         │                 │                 │               │
+│         └─────────────────┼─────────────────┘               │
+│                           │                                 │
+│  ┌───────────────────────▼──────────────────────┐           │
+│  │              Business Logic Layer            │           │
+│  │  ┌──────────────┐      ┌──────────────┐      │           │
+│  │  │   rules.py   │      │ constants.py │      │           │
+│  │  │ (Points Calc)│      │ (Config Vals)│      │           │
+│  │  └──────────────┘      └──────────────┘      │           │
+│  └───────────────────────┬──────────────────────┘           │
+└──────────────────────────┼──────────────────────────────────┘
+                           │
+┌──────────────────────────▼─────────────────────────────────────┐
+│                      Data Layer (Django ORM)                   │
+│  ┌──────────────────┐          ┌─────────────────────┐         │
+│  │   User Model     │          │ RecyclingTransaction│         │
+│  │  - id (PK)       │◄─────────│  - user (FK)        │         │
+│  │  - name          │          │  - material_type    │         │
+│  │  - phone         │          │  - quantity         │         │
+│  │  - points        │          │  - points_awarded   │         │
+│  │  - is_active     │          │  - timestamp        │         │
+│  └──────────────────┘          └─────────────────────┘         │
+└───────────────────────────┬────────────────────────────────────┘
                             │
 ┌───────────────────────────▼───────────────────────────────────────┐
-│                    SQLite Database (Development)                    │
-│              (Can be switched to PostgreSQL)                        │
-└─────────────────────────────────────────────────────────────────────┘
+│                    SQLite Database (Development)                  │
+│                   (Can be switched to PostgreSQL)                 │
+└───────────────────────────────────────────────────────────────────┘
 ```
 
 ### Component Interaction Flow
@@ -112,8 +112,8 @@ This backend system supports the core recycling flow where users:
                      │ {user_id, material_type, quantity}
                      ▼
               ┌──────────────────────┐
-              │RecyclingTransaction │
-              │      View           │
+              │RecyclingTransaction  │
+              │      View            │
               └──────┬───────────────┘
                      │
                      │ RecyclingTransactionSerializer
@@ -557,7 +557,7 @@ recycling/
 - ✅ Input validation prevents invalid data
 - ✅ Duplicate scan prevention reduces fraud
 - ✅ Atomic transactions prevent data corruption
-- ⚠️ No authentication (simplified for demo)
+- No authentication (simplified for demo)
 
 ---
 
